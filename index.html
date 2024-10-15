@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Mara Masita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #2C2E33;
+            color: #D3D3D3;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #393E46;
+            color: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        header h1 {
+            font-size: 24px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .contact-btn {
+            background-color: #F4BA2B;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #d89f1e;
+        }
+        
+        #hero {
+            width: 100%;
+            background-color: #393E46;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden; /* Added for the wave effect */
+        }
+        
+        #hero h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+        
+        .scroll-btn {
+            background-color: #F4BA2B;
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .scroll-btn:hover {
+            background-color: #d89f1e;
+        }
+        
+        /* Section Styling */
+        #interests {
+            text-align: center;
+            margin: 50px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        /* List Styling */
+        .interests-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .interests-list li {
+            font-size: 24px;
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            transition: transform 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+        
+        .interests-list li:hover {
+            transform: translateY(-5px);
+            color: #3498db; /* Change text color on hover */
+        }
+        
+        /* Animation Delay for Each List Item */
+        .interests-list li:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+        .interests-list li:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        .interests-list li:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+        .interests-list li:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+        .interests-list li:nth-child(5) {
+            animation-delay: 1.5s;
+        }
+        
+        /* Keyframe Animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #about,
+        #resume,
+        #skills,
+        #interests,
+        #languages,
+        #portfolio {
+            width: 100%;
+            padding: 50px;
+            background-color: #4E545B;
+            margin: 20px 0;
+            border-radius: 10px;
+            transition: transform 0.3s; /* Added hover effect */
+        }
+        
+        #about:hover,
+        #resume:hover,
+        #skills:hover,
+        #interests:hover,
+        #languages:hover,
+        #portfolio:hover {
+            transform: translateY(-5px); /* Subtle lift effect on hover */
+        }
+        
+        #about h2,
+        #resume h2,
+        #skills h2,
+        #interests h2,
+        #languages h2,
+        #portfolio h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .profile-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        
+        .profile-details img {
+            width: 100px; /* Adjusted size for the logo */
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 30px;
+            border: 5px solid #F4BA2B;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .resume-details,
+        .portfolio-details {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap; /* Allow wrapping of items */
+        }
+        
+        .resume-card,
+        .portfolio-card {
+            background-color: #3D434A;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            flex-basis: calc(45% - 20px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            overflow: hidden; /* Hide overflow to maintain card dimensions */
+        }
+        
+        .resume-card:hover,
+        .portfolio-card:hover {
+            transform: translateY(-5px); /* Lift effect */
+        }
+        
+        .skills {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .skill {
+            width: 100px; /* Fixed width for skill boxes */
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .skill-name {
+            margin-top: 10px;
+        }
+        
+        .language-list {
+            list-style: none;
+            padding: 0;
+            text-align: center; /* Centering language list */
+        }
+        
+        .language-item {
+            margin: 10px 0;
+        }
+        
+        footer {
+            background-color: #393E46;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+/* Portfolio Section Styles */
+#portfolio {
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#portfolio h2 {
+    color: #2C2E33; /* Main heading color */
+    margin-bottom: 20px;
+}
+
+.portfolio-details {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of portfolio cards */
+    justify-content: center; /* Center the cards */
+    gap: 20px; /* Space between cards */
+}
+
+.portfolio-card {
+    background-color: #fff; /* White background for cards */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    max-width: 300px; /* Maximum width of cards */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.portfolio-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.portfolio-images {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center align images */
+    margin-bottom: 15px; /* Space below images */
+}
+
+.portfolio-image {
+    width: 100%; /* Full width of the card */
+    border-radius: 8px; /* Rounded corners for images */
+    margin-bottom: 10px; /* Space between images */
+}
+
+.main-image {
+    max-height: 200px; /* Limit height for main images */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.secondary-image {
+    max-height: 150px; /* Limit height for secondary images */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.portfolio-link.button {
+    display: inline-block; /* Align link as a button */
+    background-color: #2C2E33; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px; /* Button padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.portfolio-link.button:hover {
+    background-color: #1f2024; /* Darker shade on hover */
+}
+.slideshow-container {
+    display: flex;
+    overflow: hidden; /* Hide overflow */
+    width: 80%;
+    max-width: 800px; /* Maximum width for the slideshow */
+    margin: 50px auto; /* Center the slideshow */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.card {
+    min-width: 100%; /* Each card takes full width of the container */
+    transition: transform 0.3s ease; /* Smooth transition */
+    display: flex;
+    flex-direction: column; /* Stack contents vertically */
+    align-items: center; /* Center align items */
+    padding: 20px; /* Space inside the card */
+    background-color: white; /* White background for the card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.card img {
+    max-width: 100%; /* Responsive image */
+    border-radius: 10px; /* Rounded corners for images */
+}
+
+.card h3 {
+    margin: 15px 0 5px; /* Space around heading */
+}
+
+.card p {
+    text-align: center; /* Center text */
+    color: #666; /* Dark gray text */
+}
+
+/* Optional: Add hover effect */
+.card:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+
+        
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="./img/masi.png" alt="Logo" class="logo" style="width: 80px; height: auto;">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Profile</a></li>
+                <li><a href="#resume">Updates</a></li>
+                <li><a href="#skills">Collab</a></li>
+                <li><a href="#interests">Contacts</a></li>
+                <li><a href="#languages">Languages</a></li> 
+                <li><a href="#portfolio">Portfolio</a></li> 
+            </ul>
+        </nav>
+        <a href="Mara_Masita_CV.pdf" target="_blank">
+            <button class="contact-btn">CV</button>
+        </a>
+        
+        <a href="https://maramasitaa.github.io/cert/" target="_blank">
+            <button class="contact-btn">Certificates</button>
+        </a>
+    </header>
+    
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <h2>Mara Masita</h2>
+        <p>ENFP | 2003 | born and raised in Malaysia</p>
+        <button class="scroll-btn" onclick="scrollToSection('#about')">Scroll down</button>
+    </section>
+
+    <section id="about">
+        <h2>Basic Info</h2>
+        <div class="profile-details">
+            <img src="./img/masi.png" alt="Mara Masita"> <!-- Keep your image source here -->
+            <div class="contact">
+                <p><strong>Name:</strong> Mara Masita</p>
+                <p><strong>Birthdate:</strong> May 25, 2003</p>
+                <p>
+                    <strong>Birthplace:</strong> Raised in Malaysia; recently returned to Cambodia. 
+                    <img src="./img/malaysia.png" alt="Malaysia Flag" style="width: 30px; height: auto; margin-right: 5px;">
+                    <img src="./img/cambodia.png" alt="Cambodia Flag" style="width: 30px; height: auto;">
+                </p>
+                <p><strong>Education:</strong></p>
+                <ul>
+                    <li>Grade 6 PSLE from Singapore</li>
+                    <li>High School IGCSE from Cambridge</li>
+                    <li>Currently majoring in Software Engineering at Beltei University, Cambodia</li>
+                </ul>
+                <p><strong>Occupation:</strong> Part-time computer teacher at Western International School for grades 5 to 7 and freelance website developer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h2>Updates</h2>
+        <div class="resume-details">
+            <div class="resume-card">
+                <h3>Elementary-Highschool</h3>
+                <ul>
+                    <li>2012-2015: Studied in Home of Hope, Jalan Kebun, Selangor, Malaysia</li>
+                    <li>Obtained Kindergarten Certificate</li>
+                    <li>2015-2017: Studied in Elshaddai Prime Centre, Jalan Dato Hamzah, Malaysia</li>
+                    <li>Obtained PSLE Certificate</li>
+                    <li>2017-2022: Studied in Elshaddai Excel Learning Centre, 6A, Jalan Mohet, 41200, Malaysia</li>
+                    <li>Obtained IGCSE Cambridge Certificate</li>
+                </ul>
+            
+                <h3>University</h3>
+                <ul>
+                    <li>Currently Studying at Beltei International University</li>
+                    <li>Bachelor of Software Engineering</li>
+                    <li>Year 2, Semester 1</li>
+                </ul>
+            </div>
+            
+            <div class="resume-card">
+                <h3>Subjects Studied</h3>
+                <ul>
+                    <li>Combined Science</li>
+                    <li>Global Perspective</li>
+                    <li>ICT</li>
+                    <li>Accounting</li>
+                    <li>Math</li>
+                    <li>English</li>
+                    <li>Character Building</li>
+                </ul>
+            </div>
+            
+            <div class="resume-card">
+                <h3>University Subjects</h3>
+                <ul>
+                    <li>Web Development</li>
+                    <li>Writing Skills</li>
+                    <li>C++ Programming</li>
+                    <li>Mathematics for Computer</li>
+                    <li>JavaScript</li>
+                    <li>Principle of Economics</li>
+                    <li>Computer Repair and Maintenance</li>
+                    <li>Computer Graphic Design</li>
+                    <li>English for Computer</li>
+                    <li>C# Programming</li>
+                    <li>Framework Web Page</li>
+                    <li>Web Development II</li>
+                    <li>Database Management System</li>
+                    <li>Data Structure and Algorithms</li>
+                    <li>Professional Web Dev with API</li>
+                    <li>Network Administration</li>
+                    <li>Laravel</li>
+                    <li>Professional C#</li>
+                    <li>Client-Server with SQL</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">HTML</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">CSS</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">JavaScript</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">SQL</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">PHP</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">Laravel</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">C++</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">Database Management</p>
+            </div>
+            <div class="skill">
+                <i class="fas fa-code" style="font-size: 36px;"></i>
+                <p class="skill-name">Frameworks</p>
+            </div>
+        </div>
+    </section>
+    <div class="wrapper">
+        <i id="left" class="fa-solid  fas fa-angle-left"></i>
+        <ul class="carousel">
+            <li class="card">
+                <div class="img"><img src="./img/skooler.png" alt="" draggable="false"> </div>
+                <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                    SKOOLER
+                </h2>
+               
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/saints.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            SAINTS.TG
+                        </h2>
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/countryD.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            COUNTRYDAWGG
+                        </h2>
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/MMobileshop.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            MM MOBILE SHOP
+                        </h2>
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/anxiety1st.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            ANXIETY
+                        </h2>
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/union.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            UNION PROJECT
+                        </h2>
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/decay1.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            Decay
+                        </h2>
+            </li>
+            <li class="card">
+                <div class="img"><img src="./img/anxiety.png"
+                        alt="" draggable="false"> </div>
+                        <h2 style="color: rgb(255, 255, 255); font-weight:bold;">
+                            ANXIETY 2.0
+                        </h2>
+            </li>
+        </ul>
+        <i id="right" class="fa-solid fas fa-angle-right"></i>
+    </div>
+    
+
+    <section id="interests">
+        <h2>Interests</h2>
+        <ul class="interests-list">
+            <li>📷 Photography</li>
+            <li>✈️ Traveling</li>
+            <li>📚 Reading</li>
+            <li>💻 Coding</li>
+            <li>🤝 Volunteering</li>
+        </ul>
+    </section>
+    
+    
+
+    <section id="languages">
+        <h2>Languages</h2>
+        <ul class="language-list">
+            <li class="language-item">English - 90%</li>
+            <li class="language-item">Bahasa Malaysia - 95%</li>
+            <li class="language-item">Mandarin - 70%</li>
+            <li class="language-item">Khmer - 80%</li>
+        </ul>
+    </section>
+
+
+    
+    
+    
+
+    <footer>
+        <p>© 2024 Mara Masita. All Rights Reserved.</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com/profile.php?id=100092742467539&mibextid=LQQJ4d" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/x_cool_msa2/" target="_blank">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a href="https://t.me/yourprofile" target="_blank">
+                <i class="fa fa-telegram"></i>
+            </a>
+        </div>
+    </footer>
+    
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.querySelector(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+        const cards = document.querySelectorAll('.card');
+let currentIndex = 0;
+
+// Function to update the visible card
+function updateCards() {
+    cards.forEach((card, index) => {
+        const offset = index - currentIndex; // Calculate offset
+        card.style.transform = `translateX(${offset * 100}%)`; // Translate cards
+    });
+}
+
+
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
